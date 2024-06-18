@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-verisafe-db
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: verisafe
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    container_name: go-app
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_DRIVER: postgres
+      DB_USER: test
+      DB_PASSWORD: test
+      DB_NAME: verisafe
+      DB_PORT: 5432
+      VERISAFE_PORT: 8000
+      VERISAFE_ADDRESS: http://localhost
+    ports:
+      - "8000:8000"
