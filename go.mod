@@ -1,6 +1,6 @@
 module github.com/dita-daystaruni/verisafe
 
-go 1.22.3
+go 1.21.11
 
 require (
 	github.com/bytedance/sonic v1.11.8 // indirect
