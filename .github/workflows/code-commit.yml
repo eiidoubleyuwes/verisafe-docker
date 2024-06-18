@@ -19,6 +19,9 @@ jobs:
           aws configure set default.region us-east-1
 
       - name: Add AWS CodeCommit remote
+        env:
+          AWS_CODECOMMIT_USERNAME: ${{ secrets.AWS_CODECOMMIT_USERNAME }}
+          AWS_CODECOMMIT_PASSWORD: ${{ secrets.AWS_CODECOMMIT_PASSWORD }}
         run: |
-          git remote add codecommit https://${{ secrets.AWS_CODECOMMIT_REPO_URL }}
+          git remote add codecommit https://${{ secrets.AWS_CODECOMMIT_USERNAME }}:${{ secrets.AWS_CODECOMMIT_PASSWORD }}@git-codecommit.us-east-1.amazonaws.com/v1/repos/${{ secrets.AWS_CODECOMMIT_REPO_URL }}
           git push codecommit HEAD:main
