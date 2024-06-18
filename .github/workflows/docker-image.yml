@@ -16,5 +16,5 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Build and tag Docker image
-        run: docker-compose -f docker-compose.yml build --build-arg VERSION=1                    
+        run: docker-compose -f docker-compose.yaml build --build-arg VERSION=1                    
   
